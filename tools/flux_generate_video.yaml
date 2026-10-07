@@ -208,16 +208,9 @@ parameters:
     en_US: Keyframes
     zh_Hans: keyframes
   human_description:
-    en_US: Set keyframes. Enter a JSON array or object where applicable. Enter a JSON
-      array or object where applicable. Enter a JSON array or object where applicable.
-      Enter a JSON array or object where applicable. Enter a JSON array or object
-      where applicable. Enter a JSON array or object where applicable.
-    zh_Hans: 设置keyframes。 数组或对象请使用 JSON 格式。 数组或对象请使用 JSON 格式。 数组或对象请使用 JSON 格式。 数组或对象请使用
-      JSON 格式。 数组或对象请使用 JSON 格式。 数组或对象请使用 JSON 格式。
-  llm_description: Set keyframes. Enter a JSON array or object where applicable. Enter
-    a JSON array or object where applicable. Enter a JSON array or object where applicable.
-    Enter a JSON array or object where applicable. Enter a JSON array or object where
-    applicable. Enter a JSON array or object where applicable.
+    en_US: Set keyframes. Enter a JSON array or object where applicable.
+    zh_Hans: 设置keyframes。 数组或对象请使用 JSON 格式。
+  llm_description: Set keyframes. Enter a JSON array or object where applicable.
 - name: start_video
   type: string
   required: false
