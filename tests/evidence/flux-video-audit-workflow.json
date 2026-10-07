@@ -1,0 +1,277 @@
+{
+  "nodes": [
+    {
+      "id": "start",
+      "type": "custom",
+      "data": {
+        "type": "start",
+        "title": "Start",
+        "desc": "",
+        "variables": [],
+        "selected": false
+      },
+      "position": {
+        "x": 0,
+        "y": 100
+      },
+      "width": 242,
+      "height": 73,
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "zIndex": 0,
+      "positionAbsolute": {
+        "x": 0,
+        "y": 100
+      }
+    },
+    {
+      "id": "generate",
+      "type": "custom",
+      "data": {
+        "type": "tool",
+        "title": "Flux",
+        "desc": "",
+        "provider_id": "acedatacloud/flux/flux",
+        "provider_name": "acedatacloud/flux/flux",
+        "provider_type": "builtin",
+        "tool_name": "flux_generate_video",
+        "tool_label": "Flux Video",
+        "tool_configurations": {
+          "action": {
+            "type": "constant",
+            "value": "generate"
+          },
+          "duration": {
+            "type": "constant",
+            "value": "5"
+          },
+          "resolution": {
+            "type": "constant",
+            "value": "hd"
+          },
+          "generate_audio": {
+            "type": "constant",
+            "value": false
+          },
+          "mode": {
+            "type": "constant",
+            "value": "t2v"
+          },
+          "model": {
+            "type": "constant",
+            "value": "flux-3"
+          }
+        },
+        "tool_parameters": {
+          "prompt": {
+            "type": "constant",
+            "value": "A teal cube on a cream surface, stationary camera, gentle moving light."
+          }
+        },
+        "tool_node_version": "2",
+        "plugin_unique_identifier": "acedatacloud/flux:0.0.1@c9cf1b791cbeebfa15ce13aaa26e7cc8ab46712ed3829ebd4d50913526b01465",
+        "retry_config": {
+          "retry_enabled": false,
+          "max_retries": 0,
+          "retry_interval": 1000
+        },
+        "selected": false
+      },
+      "position": {
+        "x": 300,
+        "y": 100
+      },
+      "width": 242,
+      "height": 218,
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "zIndex": 0,
+      "positionAbsolute": {
+        "x": 300,
+        "y": 100
+      }
+    },
+    {
+      "id": "wait",
+      "type": "custom",
+      "data": {
+        "type": "tool",
+        "title": "Retrieve completed task",
+        "desc": "",
+        "provider_id": "acedatacloud/flux/flux",
+        "provider_name": "acedatacloud/flux/flux",
+        "provider_type": "builtin",
+        "tool_name": "flux_task_retrieve",
+        "tool_label": "Flux Retrieve Task",
+        "tool_configurations": {
+          "task_id": {
+            "type": "variable",
+            "value": [
+              "generate",
+              "task_id"
+            ]
+          },
+          "wait_seconds": {
+            "type": "constant",
+            "value": 240
+          }
+        },
+        "tool_parameters": {},
+        "tool_node_version": "2",
+        "plugin_unique_identifier": "acedatacloud/flux:0.0.1@c9cf1b791cbeebfa15ce13aaa26e7cc8ab46712ed3829ebd4d50913526b01465",
+        "retry_config": {
+          "retry_enabled": false,
+          "max_retries": 0,
+          "retry_interval": 1000
+        },
+        "selected": false
+      },
+      "position": {
+        "x": 600,
+        "y": 100
+      },
+      "width": 242,
+      "height": 114,
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "zIndex": 0,
+      "positionAbsolute": {
+        "x": 600,
+        "y": 100
+      }
+    },
+    {
+      "id": "end",
+      "type": "custom",
+      "data": {
+        "type": "end",
+        "title": "Output",
+        "desc": "",
+        "outputs": [
+          {
+            "variable": "status",
+            "value_selector": [
+              "wait",
+              "status"
+            ]
+          },
+          {
+            "variable": "success",
+            "value_selector": [
+              "wait",
+              "success"
+            ]
+          },
+          {
+            "variable": "task_id",
+            "value_selector": [
+              "wait",
+              "task_id"
+            ]
+          },
+          {
+            "variable": "trace_id",
+            "value_selector": [
+              "wait",
+              "trace_id"
+            ]
+          },
+          {
+            "variable": "media_urls",
+            "value_selector": [
+              "wait",
+              "media_urls"
+            ]
+          },
+          {
+            "variable": "data",
+            "value_selector": [
+              "wait",
+              "data"
+            ]
+          },
+          {
+            "variable": "result",
+            "value_selector": [
+              "wait",
+              "result"
+            ]
+          },
+          {
+            "variable": "files",
+            "value_selector": [
+              "wait",
+              "files"
+            ]
+          }
+        ],
+        "selected": false
+      },
+      "position": {
+        "x": 900,
+        "y": 100
+      },
+      "width": 242,
+      "height": 270,
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "zIndex": 0,
+      "positionAbsolute": {
+        "x": 900,
+        "y": 100
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "start-generate",
+      "source": "start",
+      "target": "generate",
+      "sourceHandle": "source",
+      "targetHandle": "target",
+      "type": "custom",
+      "data": {
+        "sourceType": "start",
+        "targetType": "tool",
+        "isInIteration": false,
+        "isInLoop": false
+      },
+      "zIndex": 0
+    },
+    {
+      "id": "generate-wait",
+      "source": "generate",
+      "target": "wait",
+      "sourceHandle": "source",
+      "targetHandle": "target",
+      "type": "custom",
+      "data": {
+        "sourceType": "tool",
+        "targetType": "tool",
+        "isInIteration": false,
+        "isInLoop": false
+      },
+      "zIndex": 0
+    },
+    {
+      "id": "wait-end",
+      "source": "wait",
+      "target": "end",
+      "sourceHandle": "source",
+      "targetHandle": "target",
+      "type": "custom",
+      "data": {
+        "sourceType": "tool",
+        "targetType": "end",
+        "isInIteration": false,
+        "isInLoop": false
+      },
+      "zIndex": 0
+    }
+  ],
+  "viewport": {
+    "x": 60,
+    "y": 160,
+    "zoom": 0.8
+  }
+}

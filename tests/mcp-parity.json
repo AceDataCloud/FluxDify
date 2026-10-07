@@ -1,0 +1,82 @@
+{
+  "mcp_revision": "f0eed10abf310824cb4c33d4944c63d3654ac95b",
+  "mapping": [
+    {
+      "mcp_tool": "flux_list_models",
+      "dify_tools": [],
+      "parameters": {},
+      "unresolved": [],
+      "note": "Model/action selectors and the API reference; informational guidance does not submit a request."
+    },
+    {
+      "mcp_tool": "flux_list_actions",
+      "dify_tools": [],
+      "parameters": {},
+      "unresolved": [],
+      "note": "Model/action selectors and the API reference; informational guidance does not submit a request."
+    },
+    {
+      "mcp_tool": "flux_get_task",
+      "dify_tools": [
+        "flux_task_retrieve"
+      ],
+      "parameters": {
+        "task_id": "task_id"
+      },
+      "unresolved": [],
+      "note": "Set action=retrieve"
+    },
+    {
+      "mcp_tool": "flux_get_tasks_batch",
+      "dify_tools": [
+        "flux_tasks_retrieve_batch"
+      ],
+      "parameters": {
+        "task_ids": "ids"
+      },
+      "unresolved": [],
+      "note": "Set action=retrieve_batch"
+    },
+    {
+      "mcp_tool": "flux_generate_image",
+      "dify_tools": [
+        "flux_generate_image"
+      ],
+      "parameters": {
+        "prompt": "prompt",
+        "size": "size",
+        "model": "model",
+        "count": "count",
+        "callback_url": "callback_url"
+      },
+      "unresolved": [],
+      "note": "Set action=generate"
+    },
+    {
+      "mcp_tool": "flux_edit_image",
+      "dify_tools": [
+        "flux_edit_image"
+      ],
+      "parameters": {
+        "prompt": "prompt",
+        "image_url": "image_url",
+        "size": "size",
+        "model": "model",
+        "callback_url": "callback_url"
+      },
+      "unresolved": [],
+      "note": "Set action=edit"
+    },
+    {
+      "mcp_tool": "flux_generate_video",
+      "dify_tools": [
+        "flux_generate_video"
+      ],
+      "parameters": {
+        "request": "Expanded request fields (including nested JSON inputs)"
+      },
+      "unresolved": [],
+      "note": ""
+    }
+  ]
+}

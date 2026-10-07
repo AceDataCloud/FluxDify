@@ -1,0 +1,96 @@
+{
+  "tested_at": "2026-10-07T08:53:39.860831+00:00",
+  "environment": "Dify CE 1.17.1 / plugin daemon 0.6.10-local",
+  "transport": "official remote-debug; signature verification enabled",
+  "browser_test_run": true,
+  "unit_contract_tests": "28 passed, 1 warning in 0.59s",
+  "marketplace_toolkit_passed": true,
+  "package_sha256": "eea2e98442758b6b68f4c5af03331894dd98ea31a86b77a7563aec96df720b93",
+  "exact_package_serverless_install_passed": true,
+  "marketplace_install_tested": false,
+  "cloud_tested": false,
+  "cases": [
+    {
+      "case": "Flux Video Audit",
+      "tool": "flux_generate_video",
+      "workflow_run_id": "9169a176-6508-407d-8e28-c6cec69883da",
+      "workflow_status": "succeeded",
+      "service_status": "succeeded",
+      "task_id": "c6792342-1025-413c-bffe-55a3220fec31",
+      "trace_id": "3c164120-8b16-4fa9-9e9d-ad3b24156f6a",
+      "media_urls": [
+        "https://platform2.cdn.acedata.cloud/flux/c6792342-1025-413c-bffe-55a3220fec31.mp4"
+      ],
+      "error": null,
+      "new_submission": true,
+      "billing": [
+        {
+          "id": "c410ddf4-5b32-4439-8beb-7e84c3e225e6",
+          "trace_id": "3c164120-8b16-4fa9-9e9d-ad3b24156f6a",
+          "status_code": 200,
+          "deducted_amount": 7.135219221750001,
+          "created_at": "2026-10-07T08:20:46.019270Z"
+        }
+      ],
+      "billing_match": "owned credential, API and browser run window",
+      "media_verification": [
+        {
+          "case": "Flux Video Audit",
+          "size": 1458015,
+          "sha256": "4e0e0716e9ddc827fe7765aad16c01c122fea5b6d7bd679ec4a4e0e8c3a5e841",
+          "duration": "5.041667",
+          "streams": [
+            {
+              "codec_name": "h264",
+              "codec_type": "video",
+              "width": 1280,
+              "height": 704
+            }
+          ],
+          "full_decode": true
+        }
+      ],
+      "result_fields": [
+        "cost",
+        "data",
+        "success",
+        "task_id",
+        "trace_id",
+        "usage"
+      ],
+      "screenshot": "evidence/flux-video-audit.png",
+      "workflow": "evidence/flux-video-audit-workflow.json"
+    },
+    {
+      "case": "Flux Audit Batch",
+      "tool": "flux_tasks_retrieve_batch",
+      "workflow_run_id": "fae3a7ba-8e0c-4168-9366-24784856a9a8",
+      "workflow_status": "succeeded",
+      "service_status": "succeeded",
+      "task_id": "",
+      "trace_id": "",
+      "media_urls": [
+        "https://platform2.cdn.acedata.cloud/flux/7c28a8ae-c6b7-4fff-867a-ea4589d3f1b6.png"
+      ],
+      "error": null,
+      "new_submission": false,
+      "media_verification": [
+        {
+          "case": "Flux Audit Batch",
+          "size": 989961,
+          "sha256": "16eccd0521fa6991a25f5ee8de67aff2ebb48054ed9c15cd5f78628886cabf96",
+          "width": 1024,
+          "height": 1024,
+          "format": "PNG"
+        }
+      ],
+      "result_fields": [
+        "items"
+      ],
+      "screenshot": "evidence/flux-audit-batch.png",
+      "workflow": "evidence/flux-audit-batch-workflow.json"
+    }
+  ],
+  "primary_blocked": false,
+  "scope_note": "Recorded cases only. Batch regressions reuse earlier paid successful tasks; those media generations are not billed or claimed as new. New paid calls have separate usage reconciliation. Optional untested models/actions are not claimed as passed; original failures and their corrections are preserved."
+}

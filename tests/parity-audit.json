@@ -1,0 +1,86 @@
+{
+  "backend_revision": "fa94598267a82545fb1afed6ee26bafd6cbb9ca7",
+  "mcp_revision": "f0eed10abf310824cb4c33d4944c63d3654ac95b",
+  "tools": [
+    {
+      "tool": "flux_generate_image",
+      "method": "POST",
+      "path": "/flux/images",
+      "parameters": [
+        "size",
+        "count",
+        "model",
+        "prompt",
+        "image_url",
+        "callback_url"
+      ],
+      "aliases": {},
+      "schema_source": "openapi/deefc5d7-7f22-43e9-929e-f2b6afee60b7.json"
+    },
+    {
+      "tool": "flux_edit_image",
+      "method": "POST",
+      "path": "/flux/images",
+      "parameters": [
+        "size",
+        "count",
+        "model",
+        "prompt",
+        "image_url",
+        "callback_url"
+      ],
+      "aliases": {},
+      "schema_source": "openapi/deefc5d7-7f22-43e9-929e-f2b6afee60b7.json"
+    },
+    {
+      "tool": "flux_generate_video",
+      "method": "POST",
+      "path": "/flux/videos",
+      "parameters": [
+        "action",
+        "prompt",
+        "aspect_ratio",
+        "duration",
+        "resolution",
+        "version",
+        "generate_audio",
+        "safety_tolerance",
+        "draft",
+        "mode",
+        "callback_url",
+        "model",
+        "keyframes",
+        "start_video",
+        "draft_task_id"
+      ],
+      "aliases": {},
+      "schema_source": "openapi/79bc5b19-5ae8-5931-8b9e-643165c02c64.json"
+    },
+    {
+      "tool": "flux_task_retrieve",
+      "method": "POST",
+      "path": "/flux/tasks",
+      "parameters": [
+        "task_id",
+        "wait_seconds"
+      ],
+      "aliases": {},
+      "schema_source": "openapi/4f36fc31-5a95-42ac-abfc-34670c40238c.json"
+    },
+    {
+      "tool": "flux_tasks_retrieve_batch",
+      "method": "POST",
+      "path": "/flux/tasks",
+      "parameters": [
+        "ids"
+      ],
+      "aliases": {},
+      "schema_source": "openapi/4f36fc31-5a95-42ac-abfc-34670c40238c.json"
+    }
+  ],
+  "mcp_scope": "flux",
+  "notes": [
+    "Informational MCP model/action lists are represented by tool dropdowns and README capability tables.",
+    "GPT Image covers image-generation/editing/task capabilities of the broader OpenAI MCP; chat is supplied by ModelProviderDify."
+  ]
+}
