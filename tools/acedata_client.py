@@ -65,7 +65,7 @@ CONTRACTS = {
                 "async": {"rank": 101, "type": "boolean", "description": "$t(flux_images_async)"},
             },
         },
-        "defaults": {"model": "flux-2-klein", "size": "1024x1024", "count": 1},
+        "defaults": {"model": "flux-dev", "size": "1024x1024", "count": 1},
         "operation": "generate",
     },
     "flux_edit_image": {
@@ -123,7 +123,7 @@ CONTRACTS = {
                 "async": {"rank": 101, "type": "boolean", "description": "$t(flux_images_async)"},
             },
         },
-        "defaults": {"model": "flux-2-klein", "size": "1024x1024", "count": 1},
+        "defaults": {"model": "flux-kontext-pro", "size": "1:1", "count": 1},
         "operation": "edit",
     },
     "flux_generate_video": {
@@ -412,6 +412,16 @@ class AceDataFluxClient:
         retrieved: bool = False,
         synchronous: bool = False,
     ) -> dict[str, Any]:
+        if retrieved and "finished_at" in body and body["finished_at"] is None:
+            return {
+                "status": "pending",
+                "success": False,
+                "task_id": task_id,
+                "trace_id": "",
+                "media_urls": [],
+                "data": {},
+                "result": {},
+            }
         result = body.get("response") if retrieved else body
         if isinstance(result, str):
             try:

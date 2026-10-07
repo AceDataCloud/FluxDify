@@ -23,7 +23,7 @@ parameters:
     zh_Hans: 可选输出尺寸（例如 1024x1024）。
   llm_description: Optional output size (e.g., 1024x1024).
   form: form
-  default: 1024x1024
+  default: '1:1'
 - name: count
   type: number
   required: false
@@ -47,7 +47,7 @@ parameters:
     zh_Hans: 用于生成图像的模型。
   llm_description: Select the current API model for this operation.
   form: form
-  default: flux-2-klein
+  default: flux-kontext-pro
   options:
   - value: flux-dev
     label:

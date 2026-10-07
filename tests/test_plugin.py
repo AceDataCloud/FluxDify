@@ -157,3 +157,21 @@ def test_readonly_task_query_retries_transient_transport(monkeypatch):
     monkeypatch.setattr(module.time, "sleep", lambda _: None)
     Client("test-token").validate()
     assert len(calls) == 3
+
+
+def test_unfinished_platform_task_is_pending_even_with_intermediate_error():
+    result = Client("test-token")._result(
+        {"finished_at": None, "response": {"success": False, "error": {"message": "temporary"}}},
+        "owned-task",
+        retrieved=True,
+    )
+    assert result["status"] == "pending" and result["success"] is False
+
+
+def test_finished_platform_task_error_is_final():
+    with pytest.raises(APIError):
+        Client("test-token")._result(
+            {"finished_at": 123, "response": {"success": False, "error": {"message": "private"}}},
+            "owned-task",
+            retrieved=True,
+        )

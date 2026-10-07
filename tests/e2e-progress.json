@@ -11,5 +11,5 @@
       "error": "An error occurred in the acedatacloud/flux/flux, please contact the author of acedatacloud/flux/flux for help, error type: AceDataFluxError, error details: Connection failed. Check request history for an accepted task before resubmitting."
     }
   ],
-  "status": "E2E and output/billing audit in progress"
+  "status": "Primary operation completed in real Dify; final evidence in e2e-results.json"
 }
