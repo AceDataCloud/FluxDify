@@ -1,0 +1,224 @@
+identity:
+  author: acedatacloud
+  name: flux_generate_video
+  label:
+    en_US: Flux Video
+    zh_Hans: Flux 生成视频
+description:
+  human:
+    en_US: Use the Ace Data Cloud Flux APIs in Dify workflows.
+    zh_Hans: 在 Dify 工作流中使用 Ace Data Cloud Flux API。
+  llm: Use the Ace Data Cloud Flux APIs in Dify workflows. Generation returns a task
+    ID. Query the same task until complete; never resubmit a pending generation.
+parameters:
+- name: action
+  type: select
+  required: false
+  label:
+    en_US: Action
+    zh_Hans: 操作
+  human_description:
+    en_US: Set action.
+    zh_Hans: 设置操作。
+  llm_description: Set action.
+  form: form
+  default: generate
+  options:
+  - value: generate
+    label:
+      en_US: generate
+      zh_Hans: generate
+- name: prompt
+  type: string
+  required: false
+  label:
+    en_US: Prompt
+    zh_Hans: 提示词
+  human_description:
+    en_US: Set prompt.
+    zh_Hans: 设置提示词。
+  llm_description: Set prompt.
+  form: llm
+- name: aspect_ratio
+  type: string
+  required: false
+  label:
+    en_US: Aspect Ratio
+    zh_Hans: 画面比例
+  human_description:
+    en_US: Set aspect ratio.
+    zh_Hans: 设置画面比例。
+  llm_description: Set aspect ratio.
+  form: form
+  default: auto
+- name: duration
+  type: string
+  required: false
+  label:
+    en_US: Duration
+    zh_Hans: 时长（秒）
+  human_description:
+    en_US: Set duration.
+    zh_Hans: 设置时长（秒）。
+  llm_description: Set duration.
+  form: form
+  default: auto
+- name: resolution
+  type: select
+  required: false
+  label:
+    en_US: Resolution
+    zh_Hans: 分辨率
+  human_description:
+    en_US: Set resolution.
+    zh_Hans: 设置分辨率。
+  llm_description: Set resolution.
+  form: form
+  default: hd
+  options:
+  - value: hd
+    label:
+      en_US: hd
+      zh_Hans: hd
+  - value: fhd
+    label:
+      en_US: fhd
+      zh_Hans: fhd
+  - value: qhd
+    label:
+      en_US: qhd
+      zh_Hans: qhd
+  - value: uhd
+    label:
+      en_US: uhd
+      zh_Hans: uhd
+- name: version
+  type: string
+  required: false
+  label:
+    en_US: Version
+    zh_Hans: 版本
+  human_description:
+    en_US: Set version.
+    zh_Hans: 设置版本。
+  llm_description: Set version.
+  form: form
+  default: latest
+- name: generate_audio
+  type: boolean
+  required: false
+  label:
+    en_US: Generate Audio
+    zh_Hans: 生成音频
+  human_description:
+    en_US: Set generate audio.
+    zh_Hans: 设置生成音频。
+  llm_description: Set generate audio.
+  form: form
+  default: true
+- name: safety_tolerance
+  type: number
+  required: false
+  label:
+    en_US: Safety Tolerance
+    zh_Hans: safety tolerance
+  human_description:
+    en_US: Set safety tolerance.
+    zh_Hans: 设置safety tolerance。
+  llm_description: Set safety tolerance.
+  form: form
+  default: 2
+- name: draft
+  type: boolean
+  required: false
+  label:
+    en_US: Draft
+    zh_Hans: 草稿
+  human_description:
+    en_US: Set draft.
+    zh_Hans: 设置草稿。
+  llm_description: Set draft.
+  form: form
+  default: false
+- name: mode
+  type: string
+  required: false
+  label:
+    en_US: Mode
+    zh_Hans: 模式
+  human_description:
+    en_US: Set mode.
+    zh_Hans: 设置模式。
+  llm_description: Set mode.
+  form: form
+- name: model
+  type: select
+  required: false
+  label:
+    en_US: Model
+    zh_Hans: 模型
+  human_description:
+    en_US: Select the current API model for this operation.
+    zh_Hans: 选择此操作使用的当前 API 模型。
+  llm_description: Select the current API model for this operation.
+  form: form
+  default: flux-3
+  options:
+  - value: flux-3
+    label:
+      en_US: flux-3
+      zh_Hans: flux-3
+- name: keyframes
+  type: string
+  required: false
+  label:
+    en_US: Keyframes
+    zh_Hans: keyframes
+  human_description:
+    en_US: Set keyframes.
+    zh_Hans: 设置keyframes。
+  llm_description: Set keyframes.
+  form: form
+- name: start_video
+  type: string
+  required: false
+  label:
+    en_US: Start Video
+    zh_Hans: start video
+  human_description:
+    en_US: Set start video.
+    zh_Hans: 设置start video。
+  llm_description: Set start video.
+  form: form
+- name: draft_task_id
+  type: string
+  required: false
+  label:
+    en_US: Draft Task Id
+    zh_Hans: 草稿任务 ID
+  human_description:
+    en_US: Set draft task id.
+    zh_Hans: 设置草稿任务 ID。
+  llm_description: Set draft task id.
+  form: form
+output_schema:
+  type: object
+  properties:
+    status:
+      type: string
+    success:
+      type: boolean
+    task_id:
+      type: string
+    trace_id:
+      type: string
+    media_urls:
+      type: array
+      items:
+        type: string
+    data: {}
+    result:
+      type: object
+extra:
+  python:
+    source: tools/flux_generate_video.py

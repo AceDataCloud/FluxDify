@@ -1,0 +1,15 @@
+{
+  "environment": "Dify CE 1.17.1, plugin daemon 0.6.10-local, official remote debug, signature verification enabled",
+  "marketplace_install_tested": false,
+  "cases": [
+    {
+      "case": "Flux Dify E2E",
+      "workflow_status": "failed",
+      "task_status": null,
+      "task_id": null,
+      "browser_ui_run": true,
+      "error": "An error occurred in the acedatacloud/flux/flux, please contact the author of acedatacloud/flux/flux for help, error type: AceDataFluxError, error details: Connection failed. Check request history for an accepted task before resubmitting."
+    }
+  ],
+  "status": "E2E and output/billing audit in progress"
+}
