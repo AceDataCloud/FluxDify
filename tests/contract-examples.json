@@ -1,0 +1,60 @@
+[
+  {
+    "name": "flux_generate_image-1",
+    "tool": "flux_generate_image",
+    "inputs": {
+      "prompt": "Test"
+    },
+    "method": "POST",
+    "path": "/flux/images",
+    "body": {
+      "action": "generate",
+      "size": "1024x1024"
+    }
+  },
+  {
+    "name": "flux_edit_image-2",
+    "tool": "flux_edit_image",
+    "inputs": {
+      "prompt": "Edit",
+      "image_url": "https://example.org/reference.png"
+    },
+    "method": "POST",
+    "path": "/flux/images",
+    "body": {
+      "action": "edit",
+      "image_url": "https://example.org/reference.png",
+      "size": "1:1"
+    }
+  },
+  {
+    "name": "flux_generate_video-3",
+    "tool": "flux_generate_video",
+    "inputs": {
+      "prompt": "Test",
+      "duration": "5"
+    },
+    "method": "POST",
+    "path": "/flux/videos",
+    "body": {
+      "duration": 5,
+      "async": true
+    }
+  },
+  {
+    "name": "flux_tasks_retrieve_batch-4",
+    "tool": "flux_tasks_retrieve_batch",
+    "inputs": {
+      "ids": "[\"owned-task\"]"
+    },
+    "method": "POST",
+    "path": "/flux/tasks",
+    "body": {
+      "action": "retrieve_batch",
+      "ids": [
+        "owned-task"
+      ]
+    },
+    "read_only": true
+  }
+]

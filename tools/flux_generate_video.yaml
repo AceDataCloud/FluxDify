@@ -8,12 +8,14 @@ description:
   human:
     en_US: Use the Ace Data Cloud Flux APIs in Dify workflows.
     zh_Hans: 在 Dify 工作流中使用 Ace Data Cloud Flux API。
-  llm: Use the Ace Data Cloud Flux APIs in Dify workflows. Generation returns a task
-    ID. Query the same task until complete; never resubmit a pending generation.
+  llm: Use the Ace Data Cloud Flux APIs in Dify workflows. For asynchronous results,
+    preserve task_id and use the task retrieval tool until completion. A successful
+    submission is not completed output.
 parameters:
 - name: action
   type: select
   required: false
+  form: form
   label:
     en_US: Action
     zh_Hans: 操作
@@ -21,7 +23,6 @@ parameters:
     en_US: Set action.
     zh_Hans: 设置操作。
   llm_description: Set action.
-  form: form
   default: generate
   options:
   - value: generate
@@ -31,6 +32,7 @@ parameters:
 - name: prompt
   type: string
   required: false
+  form: llm
   label:
     en_US: Prompt
     zh_Hans: 提示词
@@ -38,10 +40,10 @@ parameters:
     en_US: Set prompt.
     zh_Hans: 设置提示词。
   llm_description: Set prompt.
-  form: llm
 - name: aspect_ratio
   type: string
   required: false
+  form: form
   label:
     en_US: Aspect Ratio
     zh_Hans: 画面比例
@@ -49,11 +51,10 @@ parameters:
     en_US: Set aspect ratio.
     zh_Hans: 设置画面比例。
   llm_description: Set aspect ratio.
-  form: form
-  default: auto
 - name: duration
   type: string
   required: false
+  form: form
   label:
     en_US: Duration
     zh_Hans: 时长（秒）
@@ -61,11 +62,10 @@ parameters:
     en_US: Set duration.
     zh_Hans: 设置时长（秒）。
   llm_description: Set duration.
-  form: form
-  default: auto
 - name: resolution
   type: select
   required: false
+  form: form
   label:
     en_US: Resolution
     zh_Hans: 分辨率
@@ -73,8 +73,6 @@ parameters:
     en_US: Set resolution.
     zh_Hans: 设置分辨率。
   llm_description: Set resolution.
-  form: form
-  default: hd
   options:
   - value: hd
     label:
@@ -93,8 +91,9 @@ parameters:
       en_US: uhd
       zh_Hans: uhd
 - name: version
-  type: string
+  type: select
   required: false
+  form: form
   label:
     en_US: Version
     zh_Hans: 版本
@@ -102,11 +101,15 @@ parameters:
     en_US: Set version.
     zh_Hans: 设置版本。
   llm_description: Set version.
-  form: form
-  default: latest
+  options:
+  - value: latest
+    label:
+      en_US: latest
+      zh_Hans: latest
 - name: generate_audio
   type: boolean
   required: false
+  form: form
   label:
     en_US: Generate Audio
     zh_Hans: 生成音频
@@ -114,11 +117,10 @@ parameters:
     en_US: Set generate audio.
     zh_Hans: 设置生成音频。
   llm_description: Set generate audio.
-  form: form
-  default: true
 - name: safety_tolerance
   type: number
   required: false
+  form: form
   label:
     en_US: Safety Tolerance
     zh_Hans: safety tolerance
@@ -126,11 +128,12 @@ parameters:
     en_US: Set safety tolerance.
     zh_Hans: 设置safety tolerance。
   llm_description: Set safety tolerance.
-  form: form
-  default: 2
+  min: 0
+  max: 4
 - name: draft
   type: boolean
   required: false
+  form: form
   label:
     en_US: Draft
     zh_Hans: 草稿
@@ -138,11 +141,10 @@ parameters:
     en_US: Set draft.
     zh_Hans: 设置草稿。
   llm_description: Set draft.
-  form: form
-  default: false
 - name: mode
-  type: string
+  type: select
   required: false
+  form: form
   label:
     en_US: Mode
     zh_Hans: 模式
@@ -150,18 +152,48 @@ parameters:
     en_US: Set mode.
     zh_Hans: 设置模式。
   llm_description: Set mode.
+  default: t2v
+  options:
+  - value: t2v
+    label:
+      en_US: t2v
+      zh_Hans: t2v
+  - value: i2v
+    label:
+      en_US: i2v
+      zh_Hans: i2v
+  - value: v2v
+    label:
+      en_US: v2v
+      zh_Hans: v2v
+  - value: draft_enhance
+    label:
+      en_US: draft_enhance
+      zh_Hans: draft_enhance
+- name: callback_url
+  type: string
+  required: false
   form: form
+  label:
+    en_US: Callback Url
+    zh_Hans: 回调 URL
+  human_description:
+    en_US: Set callback url for this operation.
+    zh_Hans: 设置回调 URL。
+  llm_description: Set callback url for this operation.
 - name: model
   type: select
   required: false
+  form: form
   label:
     en_US: Model
     zh_Hans: 模型
   human_description:
-    en_US: Select the current API model for this operation.
+    en_US: Select a model currently supported by this API. Availability and pricing
+      depend on the chosen model.
     zh_Hans: 选择此操作使用的当前 API 模型。
-  llm_description: Select the current API model for this operation.
-  form: form
+  llm_description: Select a model currently supported by this API. Availability and
+    pricing depend on the chosen model.
   default: flux-3
   options:
   - value: flux-3
@@ -171,17 +203,25 @@ parameters:
 - name: keyframes
   type: string
   required: false
+  form: form
   label:
     en_US: Keyframes
     zh_Hans: keyframes
   human_description:
-    en_US: Set keyframes.
-    zh_Hans: 设置keyframes。
-  llm_description: Set keyframes.
-  form: form
+    en_US: Set keyframes. Enter a JSON array or object where applicable. Enter a JSON
+      array or object where applicable. Enter a JSON array or object where applicable.
+      Enter a JSON array or object where applicable. Enter a JSON array or object
+      where applicable. Enter a JSON array or object where applicable.
+    zh_Hans: 设置keyframes。 数组或对象请使用 JSON 格式。 数组或对象请使用 JSON 格式。 数组或对象请使用 JSON 格式。 数组或对象请使用
+      JSON 格式。 数组或对象请使用 JSON 格式。 数组或对象请使用 JSON 格式。
+  llm_description: Set keyframes. Enter a JSON array or object where applicable. Enter
+    a JSON array or object where applicable. Enter a JSON array or object where applicable.
+    Enter a JSON array or object where applicable. Enter a JSON array or object where
+    applicable. Enter a JSON array or object where applicable.
 - name: start_video
   type: string
   required: false
+  form: form
   label:
     en_US: Start Video
     zh_Hans: start video
@@ -189,10 +229,10 @@ parameters:
     en_US: Set start video.
     zh_Hans: 设置start video。
   llm_description: Set start video.
-  form: form
 - name: draft_task_id
   type: string
   required: false
+  form: form
   label:
     en_US: Draft Task Id
     zh_Hans: 草稿任务 ID
@@ -200,7 +240,6 @@ parameters:
     en_US: Set draft task id.
     zh_Hans: 设置草稿任务 ID。
   llm_description: Set draft task id.
-  form: form
 output_schema:
   type: object
   properties:
