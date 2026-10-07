@@ -1,0 +1,193 @@
+{
+  "nodes": [
+    {
+      "id": "start",
+      "type": "custom",
+      "data": {
+        "type": "start",
+        "title": "Start",
+        "desc": "",
+        "variables": [],
+        "selected": false
+      },
+      "position": {
+        "x": 0,
+        "y": 100
+      },
+      "width": 242,
+      "height": 73,
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "zIndex": 0,
+      "positionAbsolute": {
+        "x": 0,
+        "y": 100
+      }
+    },
+    {
+      "id": "generate",
+      "type": "custom",
+      "data": {
+        "type": "tool",
+        "title": "Flux",
+        "desc": "",
+        "provider_id": "acedatacloud/flux/flux",
+        "provider_name": "acedatacloud/flux/flux",
+        "provider_type": "builtin",
+        "tool_name": "flux_task_retrieve",
+        "tool_label": "Flux Retrieve Task",
+        "tool_configurations": {
+          "wait_seconds": {
+            "type": "constant",
+            "value": 0
+          }
+        },
+        "tool_parameters": {
+          "task_id": {
+            "type": "constant",
+            "value": "7c28a8ae-c6b7-4fff-867a-ea4589d3f1b6"
+          }
+        },
+        "tool_node_version": "2",
+        "plugin_unique_identifier": "acedatacloud/flux:0.0.1@4c9811075b1f6f50f8b4d451556e15f3d43d805591d865332889dad19418757b",
+        "retry_config": {
+          "retry_enabled": false,
+          "max_retries": 0,
+          "retry_interval": 1000
+        },
+        "selected": false
+      },
+      "position": {
+        "x": 300,
+        "y": 100
+      },
+      "width": 242,
+      "height": 88,
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "zIndex": 0,
+      "positionAbsolute": {
+        "x": 300,
+        "y": 100
+      }
+    },
+    {
+      "id": "end",
+      "type": "custom",
+      "data": {
+        "type": "end",
+        "title": "Output",
+        "desc": "",
+        "outputs": [
+          {
+            "variable": "status",
+            "value_selector": [
+              "generate",
+              "status"
+            ]
+          },
+          {
+            "variable": "success",
+            "value_selector": [
+              "generate",
+              "success"
+            ]
+          },
+          {
+            "variable": "task_id",
+            "value_selector": [
+              "generate",
+              "task_id"
+            ]
+          },
+          {
+            "variable": "trace_id",
+            "value_selector": [
+              "generate",
+              "trace_id"
+            ]
+          },
+          {
+            "variable": "media_urls",
+            "value_selector": [
+              "generate",
+              "media_urls"
+            ]
+          },
+          {
+            "variable": "data",
+            "value_selector": [
+              "generate",
+              "data"
+            ]
+          },
+          {
+            "variable": "result",
+            "value_selector": [
+              "generate",
+              "result"
+            ]
+          },
+          {
+            "variable": "files",
+            "value_selector": [
+              "generate",
+              "files"
+            ]
+          }
+        ],
+        "selected": false
+      },
+      "position": {
+        "x": 600,
+        "y": 100
+      },
+      "width": 242,
+      "height": 270,
+      "sourcePosition": "right",
+      "targetPosition": "left",
+      "zIndex": 0,
+      "positionAbsolute": {
+        "x": 600,
+        "y": 100
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "start-generate",
+      "source": "start",
+      "target": "generate",
+      "sourceHandle": "source",
+      "targetHandle": "target",
+      "type": "custom",
+      "data": {
+        "sourceType": "start",
+        "targetType": "tool",
+        "isInIteration": false,
+        "isInLoop": false
+      },
+      "zIndex": 0
+    },
+    {
+      "id": "generate-end",
+      "source": "generate",
+      "target": "end",
+      "sourceHandle": "source",
+      "targetHandle": "target",
+      "type": "custom",
+      "data": {
+        "sourceType": "tool",
+        "targetType": "end",
+        "isInIteration": false,
+        "isInLoop": false
+      },
+      "zIndex": 0
+    }
+  ],
+  "viewport": {
+    "x": 60,
+    "y": 160,
+    "zoom": 0.8
+  }
+}

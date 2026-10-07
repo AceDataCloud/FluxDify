@@ -1,0 +1,47 @@
+{
+  "tested_at": "2026-10-07T06:45:22.713498+00:00",
+  "environment": "Dify CE 1.17.1 / plugin daemon 0.6.10-local",
+  "transport": "official remote-debug; signature verification true",
+  "browser_test_run": true,
+  "marketplace_install_tested": false,
+  "cloud_tested": false,
+  "cases": [
+    {
+      "case": "Flux Dify Completed Result",
+      "operation": "flux_generate_image",
+      "workflow_run_id": "651432da-39c8-4184-993b-e32b52f3a956",
+      "workflow_status": "succeeded",
+      "task_status": "succeeded",
+      "task_id": "7c28a8ae-c6b7-4fff-867a-ea4589d3f1b6",
+      "trace_id": "0e3023c2-a1f9-40ab-ae83-ecc0e4dbb68c",
+      "media_urls": [
+        "https://platform2.cdn.acedata.cloud/flux/7c28a8ae-c6b7-4fff-867a-ea4589d3f1b6.png"
+      ],
+      "output": [
+        {
+          "image_url": "https://platform2.cdn.acedata.cloud/flux/7c28a8ae-c6b7-4fff-867a-ea4589d3f1b6.png"
+        }
+      ],
+      "billing": {
+        "id": "ef91d798-7a63-44ec-96c2-8960af5db08a",
+        "trace_id": "0e3023c2-a1f9-40ab-ae83-ecc0e4dbb68c",
+        "status_code": 200,
+        "deducted_amount": 0.216,
+        "created_at": "2026-10-07T06:35:24.829928Z"
+      },
+      "media_verification": [
+        {
+          "case": "Flux Dify Completed Result",
+          "size": 989961,
+          "sha256": "16eccd0521fa6991a25f5ee8de67aff2ebb48054ed9c15cd5f78628886cabf96",
+          "width": 1024,
+          "height": 1024,
+          "format": "PNG"
+        }
+      ],
+      "screenshot": "evidence/flux-dify-completed-result.png",
+      "workflow": "evidence/flux-dify-completed-result-workflow.json"
+    }
+  ],
+  "scope_note": "These completed cases establish the primary plugin operation. Additional exposed operations require their own case before claiming full coverage."
+}
