@@ -1,0 +1,31 @@
+{
+  "repo": "FluxDify",
+  "marketplace_url": "https://marketplace.dify.ai/plugin/acedatacloud/flux",
+  "identifier": "acedatacloud/flux:0.0.1@9b432397c7210d1d44a74b39b5db619b6e79d26b143678b23e375ec2d2d8f39d",
+  "installation_source": "marketplace",
+  "workflow_id": "2507f618-0d0c-46c9-b040-212f59fdc83a",
+  "workflow_status": "succeeded",
+  "service_status": "succeeded",
+  "case": "Flux Marketplace Installed Transport Readback",
+  "media_urls": [
+    "https://platform2.cdn.acedata.cloud/flux/7c28a8ae-c6b7-4fff-867a-ea4589d3f1b6.png"
+  ],
+  "outputs": {
+    "status": "succeeded",
+    "success": true,
+    "task_id": "",
+    "trace_id": ""
+  },
+  "icon_matches_source": true,
+  "paid_generation_reused": true,
+  "prior_media_decode_evidence": true,
+  "media_readback_status": "completed existing task output; generation not repeated",
+  "tested_at": "2026-10-08T01:26:57.567309+00:00",
+  "environment": "Dify CE 1.17.1 / plugin daemon 0.6.10-local",
+  "signature_verification_enabled": true,
+  "remote_debug_used": false,
+  "marketplace_install_tested": true,
+  "cloud_tested": false,
+  "screenshot": "evidence/marketplace-20261008.png",
+  "workflow": "evidence/marketplace-20261008-workflow.json"
+}
