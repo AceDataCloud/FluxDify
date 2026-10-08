@@ -6,12 +6,7 @@ app:
   mode: workflow
   name: Flux Step-by-step Tutorial
   use_icon_as_answer_icon: false
-dependencies:
-- current_identifier: null
-  type: marketplace
-  value:
-    marketplace_plugin_unique_identifier: acedatacloud/flux:0.0.1@9b432397c7210d1d44a74b39b5db619b6e79d26b143678b23e375ec2d2d8f39d
-    version: null
+dependencies: []
 kind: app
 version: 0.7.0
 workflow:
@@ -86,7 +81,6 @@ workflow:
       zIndex: 0
     - data:
         desc: ''
-        plugin_unique_identifier: acedatacloud/flux:0.0.1@9b432397c7210d1d44a74b39b5db619b6e79d26b143678b23e375ec2d2d8f39d
         provider_id: acedatacloud/flux/flux
         provider_name: acedatacloud/flux/flux
         provider_type: builtin
@@ -131,7 +125,6 @@ workflow:
       zIndex: 0
     - data:
         desc: ''
-        plugin_unique_identifier: acedatacloud/flux:0.0.1@9b432397c7210d1d44a74b39b5db619b6e79d26b143678b23e375ec2d2d8f39d
         provider_id: acedatacloud/flux/flux
         provider_name: acedatacloud/flux/flux
         provider_type: builtin
